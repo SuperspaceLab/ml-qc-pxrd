@@ -1,9 +1,9 @@
-# Machine learning for QC phase identification
+# Machine Learning for Quasicrystal Diffraction (MLqcdiff)
 
 Supporting Information for the paper "Deep learning enables rapid identification of a previously unknown quasicrystal solely from multiphase powder diffraction patterns"
 
 ## Repository
-In this repository, we provide an implementation of CNN models with an example trained on a synthetic dataset.
+In this repository, we provide an implementation of a MLqcdiff model.
 
 1. Compile cython code (generator.pyx): python setup.py build_ext --inplace
 2. Run the tuning.py to tuning the model
