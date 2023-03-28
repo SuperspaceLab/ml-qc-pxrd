@@ -2,11 +2,13 @@
 
 Supporting Information for the paper "Deep learning enables rapid identification of a previously unknown quasicrystal solely from multiphase powder diffraction patterns"
 
-## Setup
-run
-```
-python setup.py build_ext --inplace
-```
+## Repository
+In this repository, we provide an implementation of CNN models with an example trained on a synthetic dataset.
+
+1. Compile cython code (generator.pyx): python setup.py build_ext --inplace
+2. Run the tuning.py to tuning the model
+3. Run the training.py to train the models
+4. Run the screening.py to screen your powder x-ray diffraction patterns
 
 ### Requirements
 - python >= 3.8
