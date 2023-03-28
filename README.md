@@ -5,7 +5,7 @@ Supporting Information for the paper "Deep learning enables rapid identification
 ## Repository
 In this repository, we provide an implementation of a MLqcdiff model.
 
-1. Compile cython code (generator.pyx): 'python setup.py build_ext --inplace'
+1. Compile cython code (generator.pyx): '''python setup.py build_ext --inplace'''
 2. Run the tuning.py to tuning the model
 3. Run the training.py to train the models
 4. Run the screening.py to screen your powder x-ray diffraction patterns
