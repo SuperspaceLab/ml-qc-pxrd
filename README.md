@@ -1,5 +1,7 @@
 # Machine learning for QC phase identification
 
+Supporting Information for the paper "Deep learning enables rapid identification of a previously unknown quasicrystal solely from multiphase powder diffraction patterns"
+
 ## Setup
 run
 ```
