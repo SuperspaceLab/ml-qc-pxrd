@@ -1,4 +1,4 @@
-# Machine Learning for Quasicrystal Diffraction (MLqcdiff)
+# MLqcdiff: Machine Learning for Quasicrystal Diffraction
 
 Supporting Information for the paper "Deep learning enables rapid identification of a previously unknown quasicrystal solely from multiphase powder diffraction patterns"
 
