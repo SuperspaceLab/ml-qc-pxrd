@@ -1,0 +1,18 @@
+# Python cache
+__pycache__/
+
+# Python build files
+*.egg-info/
+build/
+datasets/
+output/
+
+work/
+
+# Log files etc
+*.nvvp
+*.out
+*.txt
+*.log
+*.so
+*.c
