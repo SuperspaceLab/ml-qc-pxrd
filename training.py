@@ -34,6 +34,7 @@ data_num_train_qc     = 30000
 data_num_train_non_qc = 30000
 data_num_test_qc      = 10000
 data_num_test_non_qc  = 10000
+qperp_cutoff = 1.5 # in r.l.u (Yamamoto's setting).  this corresponds to 1.5*sqrt(2)=2.12... in r.l.u in Cahn-Gratias setting. 
 
 path_dataset = '.'
 path_model = './models/20230322'
@@ -44,7 +45,7 @@ if os.path.isdir('%s'%(path_model))==False:
 num_all = int((aico_max-aico_min)/aico_delta)
 
 # Generate reflection list
-ref_list = gen.reflection_list(hklmno_range, wvl, aico_max, tth_max)
+ref_list = gen.reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff)
 
 for i in range(num_all):
     

@@ -20,7 +20,7 @@ dic_wvl['Cu_Ka'] = 1.54059 # in Ang.
 dic_wvl['Cu_Kb'] = 1.3810
 wvl = dic_wvl['Cu_Ka']
 
-def reflection_list(hklmno_range, wvl, aico_max, tth_max):
+def reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff):
     """
     generates independent reflection list
     input:
@@ -28,7 +28,7 @@ def reflection_list(hklmno_range, wvl, aico_max, tth_max):
     : float wavelength
     """
     #print("generating hklmno list")
-    return independent_reflection_list(hklmno_range, wvl, aico_max, tth_max)
+    return independent_reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff)
 
 def independent_reflection_list_in_tth_range(a, wvl, aico, tth_min, tth_max):
     return selector(a, wvl, aico, tth_min, tth_max)
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     
     aico_max = aico + aico_delta
     #ref_list = calc_QC_peaks(hklmno_range, aico, aico_max, wvl, tth_min, tth_max, qperp_cutoff)
-    tmp = independent_reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff)
+    tmp = reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff)
     ref_list = independent_reflection_list_in_tth_range(tmp, wvl, aico_max, tth_min, tth_max)
     #print(len(ref_list))
     

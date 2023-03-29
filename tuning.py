@@ -59,6 +59,7 @@ if __name__ == '__main__':
     wvl = dic_wvl['Cu_Ka']
     data_num_tune_qc     = 30000
     data_num_tune_non_qc = 30000
+    qperp_cutoff = 1.5 # in r.l.u (Yamamoto's setting).  this corresponds to 1.5*sqrt(2)=2.12... in r.l.u in Cahn-Gratias setting. 
     path_dataset = '.'
     path_output = './tuning'
     output_file = 'output_'+str(today)[:-13].replace(':', '-')+'.txt'
@@ -70,7 +71,7 @@ if __name__ == '__main__':
         
     # Generate reflections list
     #reflection_list = calc_QC_peaks(hklmno_range, aico, aico_delta, wvl, tth_min, tth_max)
-    ref_list = gen.independent_reflection_list(hklmno_range, wvl, aico, tth_max)
+    ref_list = gen.reflection_list(hklmno_range, wvl, aico, tth_max, qperp_cutoff)
     reflection_list = gen.independent_reflection_list_in_tth_range(ref_list, wvl, aico, tth_min, tth_max)
 
     # data for hyperparameter tuning
