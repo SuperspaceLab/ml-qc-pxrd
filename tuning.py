@@ -7,10 +7,6 @@ import random
 import glob
 #sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import generator as gen 
-from pxrd import calc_QC_peaks
-from pxrd import calc_virtualiQC
-from pxrd import calc_multiQC
-from pxrd import calc_others
 import keras
 import tensorflow as tf
 from tensorflow.keras.layers import Dense, Flatten, Conv1D ,Dropout, MaxPooling1D, InputLayer
