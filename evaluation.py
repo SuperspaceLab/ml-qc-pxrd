@@ -11,15 +11,11 @@ from pxrd import calc_QC_peaks
 from pxrd import calc_virtualiQC
 from pxrd import calc_multiQC
 from pxrd import calc_others
-
 import tensorflow as tf
-
-TAU = (1 + np.sqrt(5))/2
 
 dic_wvl = {}
 dic_wvl['Cu_Ka'] = 1.54059
 dic_wvl['Cu_Kb'] = 1.3810
-#wvl = dic_wvl['Cu_Ka']
 
 def generate_test_datasets(QC_peaks, wvl, aico_min, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_qc, data_num_nonqc):
     """
