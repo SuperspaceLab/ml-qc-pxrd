@@ -26,6 +26,10 @@ def run(path_model, path_exptdata, extension, path_output, output_file_name, aic
     :param float aico_delta
     output:
     """
+    
+    if os.path.isdir('%s'%(path_output))==False:
+        os.mkdir('%s'%(path_output))
+    
     file_list = glob.glob(path_exptdata+'/*.'+extension)
     len_file_list = len(file_list)
     files = {}
@@ -215,11 +219,11 @@ if __name__ == '__main__':
     import pytz
     today = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
     
-    path_model = './models'
+    path_model = './models/20230322'
     path_exptdata = '../datasets/ohhashi_imram'
     #path_exptdata = '../expt_data/xrd_iwasaki'
     extension = 'txt' # extension of exptdata
-    path_output = './output'
+    path_output = './screening_result'
     output_file_name = 'result_'+str(today)[:-13].replace(':', '-')+'.txt'
     
     aico_min = 4.00  

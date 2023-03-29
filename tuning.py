@@ -5,10 +5,7 @@ import numpy as np
 import math
 import random
 import glob
-import datetime
-import pytz
-today = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
-#sys.path.append(os.path.join(os.path.dirname(__file__), '.'))
+#sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import generator as gen 
 from pxrd import calc_QC_peaks
 from pxrd import calc_virtualiQC
@@ -50,6 +47,10 @@ def create_model(num_Clayer, num_Dlayer, dense_units, num_filters, pool_sizes, C
 
 if __name__ == '__main__':
 
+    import datetime
+    import pytz
+    today = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
+    
     aico = 5.0  # icosahedral lattice constant in Ang
     aico_delta = 0.0
     hklmno_range = 6
