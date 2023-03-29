@@ -27,7 +27,6 @@ TAU = (1 + np.sqrt(5))/2
 dic_wvl = {}
 dic_wvl['Cu_Ka'] = 1.54059
 dic_wvl['Cu_Kb'] = 1.3810
-wvl = dic_wvl['Cu_Ka']
 
 def create_model(num_Clayer, num_Dlayer, dense_units, num_filters, pool_sizes, Cstrides, Pstrides, dropout_rates, filter_sizes):
     model = Sequential()
@@ -57,6 +56,7 @@ if __name__ == '__main__':
     tth_min = 20.0 # in degree
     tth_max = 80.0
     tth_step = 0.01
+    wvl = dic_wvl['Cu_Ka']
     data_num_tune_qc     = 30000
     data_num_tune_non_qc = 30000
     path_dataset = '.'
