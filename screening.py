@@ -12,7 +12,7 @@ import tqdm
 import copy
 import time
 
-def main(path_model, path_exptdata, extension, path_output, output_file_name, aico_min, aico_max, aico_delta):
+def run(path_model, path_exptdata, extension, path_output, output_file_name, aico_min, aico_max, aico_delta):
     """
     screens PXRD patterns.
     input:
@@ -226,4 +226,4 @@ if __name__ == '__main__':
     aico_max = 5.975 
     aico_delta = 0.025
     
-    main(path_model, path_exptdata, extension, path_output, output_file_name, aico_min, aico_max, aico_delta)
+    run(path_model, path_exptdata, extension, path_output, output_file_name, aico_min, aico_max, aico_delta)
