@@ -14,10 +14,6 @@ from pxrd import calc_others
 
 import tensorflow as tf
 
-path_model = './models/20230322/'
-epoch_num = 12 
-batch_num = 256
-
 TAU = (1 + np.sqrt(5))/2
 
 dic_wvl = {}
@@ -42,7 +38,7 @@ def generate_test_datasets(QC_peaks, wvl, aico_min, aico_delta, hklmno_range, tt
     
     return MultiQC_test, others_test
 
-def run(aico_min, aico_max, aico_delta, hklmno_range, tth_min, tth_max, tth_step, wvl, data_num_QC, data_num_nonQC, output_flnm):
+def run(path_model, epoch_num, batch_num, aico_min, aico_max, aico_delta, hklmno_range, tth_min, tth_max, tth_step, wvl, data_num_QC, data_num_nonQC, output_flnm):
     """
     run model evaluation uing synthetic datasets 
     """
@@ -66,7 +62,7 @@ def run(aico_min, aico_max, aico_delta, hklmno_range, tth_min, tth_max, tth_step
         others_test = others_test.reshape(data_num_nonQC, tth_step_num, 1)
         
         # test trained model
-        model_name = path_model+str(aico3)+'_'+str(round(aico3+aico_delta, 3))+'__'+str(epoch_num)+'__'+str(batch_num)
+        model_name = path_model+'/'++str(aico3)+'_'+str(round(aico3+aico_delta, 3))+'__'+str(epoch_num)+'__'+str(batch_num)
         tf.keras.backend.clear_session()
         model = tf.keras.models.load_model(model_name, compile = False)
 
@@ -98,6 +94,10 @@ def run(aico_min, aico_max, aico_delta, hklmno_range, tth_min, tth_max, tth_step
     
 if __name__ == '__main__':
     
+    path_model = './models/20230322'
+    epoch_num = 12 
+    batch_num = 256
+    
     aico_min = 5.0 # 4.0 # icosahedral lattice constant in Ang.
     aico_max = 5.1 # 6.0
     aico_delta = 0.025
@@ -110,5 +110,5 @@ if __name__ == '__main__':
     data_num_nonQC = 3000 # number of non-QCpatterns for each single model
     output_flnm = 'evaluation_result.txt'
 
-    run(aico_min, aico_max, aico_delta, hklmno_range, tth_min, tth_max, tth_step, wvl, data_num_QC, data_num_nonQC, output_flnm)
+    run(path_model, epoch_num, batch_num, aico_min, aico_max, aico_delta, hklmno_range, tth_min, tth_max, tth_step, wvl, data_num_QC, data_num_nonQC, output_flnm)
     
