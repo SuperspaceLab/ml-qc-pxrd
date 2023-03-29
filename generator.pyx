@@ -440,7 +440,7 @@ cdef list prjctn_recipro_perp(list h):
     #g6 = ( h4 - h6) + TAU*( h2 - h3) # TAU*h2 - TAU*h3 + h4 - h6
     return [g4*CONST1, g5*CONST1, g6*CONST1]
 
-cpdef independent_reflection_list(int h_range, double wvl, double aico_max, double tth_max, double qperp_cutoff):
+cpdef list independent_reflection_list(int h_range, double wvl, double aico_max, double tth_max, double qperp_cutoff):
     """
     generates independent reflection list.
     
