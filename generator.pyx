@@ -712,7 +712,8 @@ cpdef list calc_QC_peaks(int h_range, double aico_min, double aico_max, double w
                                  gpar0, gper0 = calc_gmag0([h1, h2, h3, h4, h5, h6])
                                  gper_ = gper0/aico_max
                                  # cut off
-                                 if gper_ > qperp_cutoff:
+                                 #if gper_ > qperp_cutoff:
+                                 if gper0 > qperp_cutoff:
                                      continue
                                  gpar_ = gpar0/aico_max
                                  #tth_ = 2.0*casin(gpar_*wvl/2.0)*180.0/PI
