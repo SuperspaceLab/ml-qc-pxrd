@@ -22,7 +22,7 @@ def generate_test_datasets(QC_peaks, wvl, aico_min, aico_delta, hklmno_range, tt
     generates test data for evaluating trained models.
     """
     aico = aico_min
-    print('icosahedral attice constant [Å]', aico)
+    print('icosahedral lattice constant [Å]', aico)
     
     # Multi-iQC dataset
     #QC_peaks = calc_QC_peaks(hklmno_range, aico, aico+aico_delta, wvl, tth_min, tth_max, 1.5)
