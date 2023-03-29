@@ -226,8 +226,8 @@ if __name__ == '__main__':
     path_output = './screening_result'
     output_file_name = 'result_'+str(today)[:-13].replace(':', '-')+'.txt'
     
-    aico_min = 4.00  
-    aico_max = 5.975 
+    aico_min = 4.00
+    aico_max = 6.00
     aico_delta = 0.025
     
     run(path_model, path_exptdata, extension, path_output, output_file_name, aico_min, aico_max, aico_delta)
