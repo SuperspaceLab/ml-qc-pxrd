@@ -6,12 +6,7 @@ import random
 import glob
 import math
 #sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from pxrd import calc_QC_peaks
-from pxrd import calc_virtualiQC
-from pxrd import calc_multiQC
-from pxrd import calc_others
-from pxrd import independent_reflection_list
-from pxrd import selector
+import pxrd
 
 TAU = (1 + np.sqrt(5))/2
 
@@ -27,11 +22,10 @@ def reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff):
     : int hklmno_range
     : float wavelength
     """
-    #print("generating hklmno list")
-    return independent_reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff)
+    return pxrd.independent_reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff)
 
 def independent_reflection_list_in_tth_range(a, wvl, aico, tth_min, tth_max):
-    return selector(a, wvl, aico, tth_min, tth_max)
+    return pxrd.selector(a, wvl, aico, tth_min, tth_max)
 
 def dataset(path, wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_qc, data_num_non_qc):
 
@@ -43,13 +37,13 @@ def dataset(path, wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, tt
     #QC_peaks = calc_QC_peaks(hklmno_range, aico_min, aico_max, wvl, tth_min, tth_max)
     
     # Multi-iQC
-    virtualQC_data = calc_virtualiQC(data_num_qc, QC_peaks, wvl, aico, aico+aico_delta, tth_min, tth_max, tth_step)
-    multiQC_data = calc_multiQC(virtualQC_data, tth_min, tth_max, tth_step)
+    virtualQC_data = pxrd.calc_virtualiQC(data_num_qc, QC_peaks, wvl, aico, aico+aico_delta, tth_min, tth_max, tth_step)
+    multiQC_data = pxrd.calc_multiQC(virtualQC_data, tth_min, tth_max, tth_step)
     for i in multiQC_data:
         myData.append([i,1])
 
     # Non-iQC
-    others_train = calc_others(data_num_non_qc, tth_min, tth_max, tth_step)
+    others_train = pxrd.calc_others(data_num_non_qc, tth_min, tth_max, tth_step)
     for i in others_train:
         myData.append([i,0])
 
@@ -98,4 +92,3 @@ if __name__ == '__main__':
     data_num_test_qc    = 20
     data_num_test_other = 20
     x_test, y_test = dataset(path, wvl, ref_list, aico, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_test_qc, data_num_test_other)
-

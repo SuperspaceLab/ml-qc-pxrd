@@ -529,7 +529,7 @@ cdef int number_of_equivalent_ref(list h):
     :param array h
     """
     cdef list a
-    a = equivalent_sym_op
+    a = equivalent_sym_op(h)
     return len(a)
 
 cdef list equivalent_sym_op(list h):
