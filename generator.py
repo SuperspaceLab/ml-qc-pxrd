@@ -10,7 +10,6 @@ import pxrd
 
 dic_wvl = {}
 dic_wvl['Cu_Ka'] = 1.54059 # in Ang.
-dic_wvl['Cu_Kb'] = 1.3810
 
 def reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff):
     """

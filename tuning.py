@@ -19,7 +19,6 @@ from keras.layers import Conv1D, MaxPooling1D
 
 dic_wvl = {}
 dic_wvl['Cu_Ka'] = 1.54059
-dic_wvl['Cu_Kb'] = 1.3810
 
 aico = 5.0  # icosahedral lattice constant in Ang
 aico_delta = 0.0

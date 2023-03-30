@@ -15,7 +15,6 @@ import generator as gen
 
 dic_wvl = {}
 dic_wvl['Cu_Ka'] = 1.54059
-dic_wvl['Cu_Kb'] = 1.3810
 
 aico_min = 4.000
 aico_max = 6.000
