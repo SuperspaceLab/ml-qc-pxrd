@@ -38,15 +38,13 @@ qperp_cutoff = 1.5 # in r.l.u (Yamamoto's setting).  this corresponds to 1.5*sqr
 
 path_dataset = '.'
 path_model = './models/20230322'
-
 if os.path.isdir('%s'%(path_model))==False:
     os.mkdir('%s'%(path_model))
-
-num_all = int((aico_max-aico_min)/aico_delta)
 
 # Generate reflection list
 ref_list = gen.reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff)
 
+num_all = int((aico_max-aico_min)/aico_delta)
 for i in range(num_all):
     
     aico = aico_min + aico_delta*i
@@ -56,7 +54,7 @@ for i in range(num_all):
     # load relfection list and adjust tth.
     ref_list = gen.independent_reflection_list_in_tth_range(ref_list, wvl, aico + aico_delta, tth_min, tth_max)
     
-    # load datasets for training and test        
+    # load datasets for training and test
     #x_train=np.load('%s/x_train.npy'%(path_dataset))
     #x_test=np.load('%s/x_test.npy'%(path_dataset))
     #y_train=np.load('%s/y_train.npy'%(path_dataset))
