@@ -27,19 +27,25 @@ def independent_reflection_list_in_tth_range(aico, wvl, aico, tth_min, tth_max):
 def dataset(wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_qc, data_num_nonqc):
     """
     generates dataset.
+    input:
+    :param 
+    
+    output:
+    list multiQC, multiphase iQC powder x-ray diffraction patterns 
+    list other,  nonQC powder x-ray diffraction patterns 
     """
     aico = aico_min
     print('icosahedral lattice constant [Å]', aico)
     
     # Multi-iQC dataset
     #QC_peaks = calc_QC_peaks(hklmno_range, aico, aico+aico_delta, wvl, tth_min, tth_max, 1.5)
-    virtualQC_test = pxrd.calc_virtualiQC(data_num_qc, QC_peaks, wvl, aico, aico+aico_delta, tth_min, tth_max, tth_step)
-    multiQC_test = pxrd.calc_multiQC(virtualQC_test, tth_min, tth_max, tth_step)
+    virtualQC = pxrd.calc_virtualiQC(data_num_qc, QC_peaks, wvl, aico, aico+aico_delta, tth_min, tth_max, tth_step)
+    multiQC = pxrd.calc_multiQC(virtualQC_test, tth_min, tth_max, tth_step)
 
     # Non-iQC dataset
-    others_test = pxrd.calc_others(data_num_nonqc, tth_min, tth_max, tth_step)
+    other = pxrd.calc_others(data_num_nonqc, tth_min, tth_max, tth_step)
     
-    return multiQC_test, others_test
+    return multiQC, other
 
 def dataset_labeled(wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_qc, data_num_non_qc):
     """
