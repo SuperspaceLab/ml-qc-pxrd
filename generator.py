@@ -24,27 +24,43 @@ def reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff):
     """
     return pxrd.independent_reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff)
 
-def independent_reflection_list_in_tth_range(a, wvl, aico, tth_min, tth_max):
-    return pxrd.selector(a, wvl, aico, tth_min, tth_max)
+def independent_reflection_list_in_tth_range(aico, wvl, aico, tth_min, tth_max):
+    return pxrd.selector(aico, wvl, aico, tth_min, tth_max)
 
-def dataset(path, wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_qc, data_num_non_qc):
-
+def dataset(wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_qc, data_num_nonqc):
+    """
+    generates test data for evaluating trained models.
+    """
     aico = aico_min
-    print('Lattice constant [Å]', aico)
+    print('icosahedral lattice constant [Å]', aico)
+    
+    # Multi-iQC dataset
+    #QC_peaks = calc_QC_peaks(hklmno_range, aico, aico+aico_delta, wvl, tth_min, tth_max, 1.5)
+    virtualQC_test = pxrd.calc_virtualiQC(data_num_qc, QC_peaks, wvl, aico, aico+aico_delta, tth_min, tth_max, tth_step)
+    multiQC_test = pxrd.calc_multiQC(virtualQC_test, tth_min, tth_max, tth_step)
+
+    # Non-iQC dataset
+    others_test = pxrd.calc_others(data_num_nonqc, tth_min, tth_max, tth_step)
+    
+    return multiQC_test, others_test
+
+def dataset_labeled(wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_qc, data_num_non_qc):
+
+    #aico = aico_min
+    #print('Lattice constant [Å]', aico)
 
     myData = []
-    
-    #QC_peaks = calc_QC_peaks(hklmno_range, aico_min, aico_max, wvl, tth_min, tth_max)
+    multiQC_data, others_data = dataset(wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_qc, data_num_nonqc)
     
     # Multi-iQC
-    virtualQC_data = pxrd.calc_virtualiQC(data_num_qc, QC_peaks, wvl, aico, aico+aico_delta, tth_min, tth_max, tth_step)
-    multiQC_data = pxrd.calc_multiQC(virtualQC_data, tth_min, tth_max, tth_step)
+    #virtualQC_data = pxrd.calc_virtualiQC(data_num_qc, QC_peaks, wvl, aico, aico+aico_delta, tth_min, tth_max, tth_step)
+    #multiQC_data = pxrd.calc_multiQC(virtualQC_data, tth_min, tth_max, tth_step)
     for i in multiQC_data:
         myData.append([i,1])
 
     # Non-iQC
-    others_train = pxrd.calc_others(data_num_non_qc, tth_min, tth_max, tth_step)
-    for i in others_train:
+    #others_data = pxrd.calc_others(data_num_non_qc, tth_min, tth_max, tth_step)
+    for i in others_data:
         myData.append([i,0])
 
     random.shuffle(myData)
@@ -54,15 +70,14 @@ def dataset(path, wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, tt
         x_data.append(feature)
         y_data.append(label)
     
-    #np.save('%s/x_data.npy'%(path), x_train)
-    #np.save('%s/y_data.npy'%(path), y_train)
+    #np.save('./x_data.npy', x_train)
+    #np.save('./y_data.npy', y_train)
     x_data = np.array(x_data, dtype='float64')
     y_data = np.array(y_data, dtype='float64')
     return x_data, y_data
 
 if __name__ == '__main__':
     
-    path = '.'
     aico = 5.0 # in Ang
     aico_delta = 0.025
     hklmno_range = 3
@@ -84,11 +99,11 @@ if __name__ == '__main__':
     #data_num_train_other = 30000
     data_num_train_qc    = 20
     data_num_train_other = 20
-    x_train, y_train = dataset(path, wvl, ref_list, aico, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_train_qc, data_num_train_other)
+    x_train, y_train = dataset(wvl, ref_list, aico, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_train_qc, data_num_train_other)
     
     # test data
     #data_num_test_qc    = 10000
     #data_num_test_other = 10000
     data_num_test_qc    = 20
     data_num_test_other = 20
-    x_test, y_test = dataset(path, wvl, ref_list, aico, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_test_qc, data_num_test_other)
+    x_test, y_test = dataset(wvl, ref_list, aico, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_test_qc, data_num_test_other)

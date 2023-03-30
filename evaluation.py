@@ -7,32 +7,28 @@ import glob
 import math
 import tqdm
 import generator as gen
-from pxrd import calc_QC_peaks
-from pxrd import calc_virtualiQC
-from pxrd import calc_multiQC
-from pxrd import calc_others
 import tensorflow as tf
 
 dic_wvl = {}
 dic_wvl['Cu_Ka'] = 1.54059
 dic_wvl['Cu_Kb'] = 1.3810
 
+"""
 def generate_test_datasets(QC_peaks, wvl, aico_min, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_qc, data_num_nonqc):
-    """
-    generates test data for evaluating trained models.
-    """
+
     aico = aico_min
     print('icosahedral lattice constant [Å]', aico)
     
     # Multi-iQC dataset
     #QC_peaks = calc_QC_peaks(hklmno_range, aico, aico+aico_delta, wvl, tth_min, tth_max, 1.5)
-    virtualQC_test = calc_virtualiQC(data_num_qc, QC_peaks, wvl, aico, aico+aico_delta, tth_min, tth_max, tth_step)
-    MultiQC_test = calc_multiQC(virtualQC_test, tth_min, tth_max, tth_step)
+    virtualQC_test = pxrd.calc_virtualiQC(data_num_qc, QC_peaks, wvl, aico, aico+aico_delta, tth_min, tth_max, tth_step)
+    MultiQC_test = pxrd.calc_multiQC(virtualQC_test, tth_min, tth_max, tth_step)
 
     # Non-iQC dataset
-    others_test = calc_others(data_num_nonqc, tth_min, tth_max, tth_step)
+    others_test = pxrd.calc_others(data_num_nonqc, tth_min, tth_max, tth_step)
     
     return MultiQC_test, others_test
+"""
 
 def run(path_model, epoch_num, batch_num, aico_min, aico_max, aico_delta, hklmno_range, tth_min, tth_max, tth_step, wvl, data_num_QC, data_num_nonQC, output_flnm):
     """
@@ -53,7 +49,7 @@ def run(path_model, epoch_num, batch_num, aico_min, aico_max, aico_delta, hklmno
         
         # Generating test data
         ref_list = gen.independent_reflection_list_in_tth_range(ref_list, wvl, aico3, tth_min, tth_max)
-        MultiQC_test, others_test = generate_test_datasets(ref_list, wvl, aico3, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_QC, data_num_nonQC)
+        MultiQC_test, others_test = gen.dataset(wvl, ref_list, aico3, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_QC, data_num_nonQC)
         MultiQC_test = MultiQC_test.reshape(data_num_QC, tth_step_num, 1)
         others_test = others_test.reshape(data_num_nonQC, tth_step_num, 1)
         

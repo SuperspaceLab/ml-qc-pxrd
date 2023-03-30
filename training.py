@@ -36,7 +36,6 @@ data_num_test_qc      = 10000
 data_num_test_non_qc  = 10000
 qperp_cutoff = 1.5 # in r.l.u (Yamamoto's setting).  this corresponds to 1.5*sqrt(2)=2.12... in r.l.u in Cahn-Gratias setting. 
 
-path_dataset = '.'
 path_model = './models/20230322'
 if os.path.isdir('%s'%(path_model))==False:
     os.mkdir('%s'%(path_model))
@@ -61,15 +60,15 @@ for i in range(num_all):
     #y_test=np.load('%s/y_test.npy'%(path_dataset))
     
     # Training data
-    x_train, y_train = gen.dataset(path_dataset, wvl, ref_list, \
-                                aico, aico_delta, \
-                                hklmno_range, tth_min, tth_max, tth_step, \
-                                data_num_train_qc, data_num_train_non_qc)
+    x_train, y_train = gen.dataset_labeled(wvl, ref_list, \
+                                            aico, aico_delta, \
+                                            hklmno_range, tth_min, tth_max, tth_step, \
+                                            data_num_train_qc, data_num_train_non_qc)
     # Test data
-    x_test, y_test = gen.dataset(path_dataset, wvl, ref_list, \
-                                aico, aico_delta, \
-                                hklmno_range, tth_min, tth_max, tth_step, \
-                                data_num_test_qc,  data_num_test_non_qc)
+    x_test, y_test = gen.dataset_labeled(wvl, ref_list, \
+                                        aico, aico_delta, \
+                                        hklmno_range, tth_min, tth_max, tth_step, \
+                                        data_num_test_qc,  data_num_test_non_qc)
     
     input_=x_train.shape[1]
     tf.keras.backend.set_floatx('float64')
