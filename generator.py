@@ -13,15 +13,27 @@ dic_wvl['Cu_Ka'] = 1.54059 # in Ang.
 
 def reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff):
     """
-    generates independent reflection list
+    generates independent reflections list
     input:
-    : int hklmno_range
-    : float wavelength
+    :param int hklmno_range
+    :param float wvl
+    :param float aico_max
+    :param float tth_max
+    :param float qperp_cutoff
     """
     return pxrd.independent_reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff)
 
-def independent_reflection_list_in_tth_range(a, wvl, aico, tth_min, tth_max):
-    return pxrd.selector(a, wvl, aico, tth_min, tth_max)
+def independent_reflection_list_in_tth_range(ref_list, wvl, aico, tth_min, tth_max):
+    """
+    selects independent reflections in a specified tth-range
+    input:
+    :param list  ref_list
+    :param float wvl
+    :param float aico_max
+    :param float tth_max
+    :param float qperp_cutoff
+    """
+    return pxrd.selector(ref_list, wvl, aico, tth_min, tth_max)
 
 def dataset(wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_qc, data_num_nonqc):
     """
