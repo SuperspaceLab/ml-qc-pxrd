@@ -21,8 +21,8 @@ def reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff):
     """
     return pxrd.independent_reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff)
 
-def independent_reflection_list_in_tth_range(aico, wvl, aico, tth_min, tth_max):
-    return pxrd.selector(aico, wvl, aico, tth_min, tth_max)
+def independent_reflection_list_in_tth_range(a, wvl, aico, tth_min, tth_max):
+    return pxrd.selector(a, wvl, aico, tth_min, tth_max)
 
 def dataset(wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_qc, data_num_nonqc):
     """
@@ -40,7 +40,7 @@ def dataset(wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, tth_max,
     # Multi-iQC dataset
     #QC_peaks = calc_QC_peaks(hklmno_range, aico, aico+aico_delta, wvl, tth_min, tth_max, 1.5)
     virtualQC = pxrd.calc_virtualiQC(data_num_qc, QC_peaks, wvl, aico, aico+aico_delta, tth_min, tth_max, tth_step)
-    multiQC = pxrd.calc_multiQC(virtualQC_test, tth_min, tth_max, tth_step)
+    multiQC = pxrd.calc_multiQC(virtualQC, tth_min, tth_max, tth_step)
 
     # Non-iQC dataset
     other = pxrd.calc_others(data_num_nonqc, tth_min, tth_max, tth_step)
@@ -55,7 +55,7 @@ def dataset_labeled(wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, 
     #print('Lattice constant [Å]', aico)
 
     myData = []
-    multiQC_data, others_data = dataset(wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_qc, data_num_nonqc)
+    multiQC_data, others_data = dataset(wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_qc, data_num_non_qc)
     
     # Multi-iQC
     #virtualQC_data = pxrd.calc_virtualiQC(data_num_qc, QC_peaks, wvl, aico, aico+aico_delta, tth_min, tth_max, tth_step)
