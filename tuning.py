@@ -18,8 +18,6 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv1D, MaxPooling1D
 
-TAU = (1 + np.sqrt(5))/2
-
 dic_wvl = {}
 dic_wvl['Cu_Ka'] = 1.54059
 dic_wvl['Cu_Kb'] = 1.3810

@@ -13,22 +13,21 @@ dic_wvl = {}
 dic_wvl['Cu_Ka'] = 1.54059
 dic_wvl['Cu_Kb'] = 1.3810
 
-"""
-def generate_test_datasets(QC_peaks, wvl, aico_min, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_qc, data_num_nonqc):
 
-    aico = aico_min
-    print('icosahedral lattice constant [Å]', aico)
-    
-    # Multi-iQC dataset
-    #QC_peaks = calc_QC_peaks(hklmno_range, aico, aico+aico_delta, wvl, tth_min, tth_max, 1.5)
-    virtualQC_test = pxrd.calc_virtualiQC(data_num_qc, QC_peaks, wvl, aico, aico+aico_delta, tth_min, tth_max, tth_step)
-    MultiQC_test = pxrd.calc_multiQC(virtualQC_test, tth_min, tth_max, tth_step)
+#def generate_test_datasets(QC_peaks, wvl, aico_min, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_qc, data_num_nonqc):
 
-    # Non-iQC dataset
-    others_test = pxrd.calc_others(data_num_nonqc, tth_min, tth_max, tth_step)
+#    aico = aico_min
+#    print('icosahedral lattice constant [Å]', aico)
     
-    return MultiQC_test, others_test
-"""
+#    # Multi-iQC dataset
+#    #QC_peaks = calc_QC_peaks(hklmno_range, aico, aico+aico_delta, wvl, tth_min, tth_max, 1.5)
+#    virtualQC_test = pxrd.calc_virtualiQC(data_num_qc, QC_peaks, wvl, aico, aico+aico_delta, tth_min, tth_max, tth_step)
+#    MultiQC_test = pxrd.calc_multiQC(virtualQC_test, tth_min, tth_max, tth_step)
+
+#    # Non-iQC dataset
+#    others_test = pxrd.calc_others(data_num_nonqc, tth_min, tth_max, tth_step)
+    
+#    return MultiQC_test, others_test
 
 def run(path_model, epoch_num, batch_num, aico_min, aico_max, aico_delta, hklmno_range, tth_min, tth_max, tth_step, wvl, data_num_QC, data_num_nonQC, output_flnm):
     """

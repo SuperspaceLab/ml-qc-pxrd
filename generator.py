@@ -8,12 +8,9 @@ import math
 #sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import pxrd
 
-TAU = (1 + np.sqrt(5))/2
-
 dic_wvl = {}
 dic_wvl['Cu_Ka'] = 1.54059 # in Ang.
 dic_wvl['Cu_Kb'] = 1.3810
-wvl = dic_wvl['Cu_Ka']
 
 def reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff):
     """
@@ -29,7 +26,7 @@ def independent_reflection_list_in_tth_range(aico, wvl, aico, tth_min, tth_max):
 
 def dataset(wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_qc, data_num_nonqc):
     """
-    generates test data for evaluating trained models.
+    generates dataset.
     """
     aico = aico_min
     print('icosahedral lattice constant [Å]', aico)
@@ -45,7 +42,9 @@ def dataset(wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, tth_max,
     return multiQC_test, others_test
 
 def dataset_labeled(wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_qc, data_num_non_qc):
-
+    """
+    generates labeled dataset
+    """
     #aico = aico_min
     #print('Lattice constant [Å]', aico)
 

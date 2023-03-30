@@ -11,17 +11,11 @@ from keras.layers.pooling import GlobalMaxPooling1D
 from keras import regularizers
 import glob
 import math
-#sys.path.append(os.path.join(os.path.dirname(__file__), '.'))
 import generator as gen
-from pxrd import calc_QC_peaks
-from pxrd import calc_virtualiQC
-from pxrd import calc_multiQC
-from pxrd import calc_others
 
 dic_wvl = {}
 dic_wvl['Cu_Ka'] = 1.54059
 dic_wvl['Cu_Kb'] = 1.3810
-wvl = dic_wvl['Cu_Ka']
 
 aico_min = 4.000
 aico_max = 6.000
@@ -30,6 +24,7 @@ hklmno_range = 6
 tth_min = 20.0
 tth_max = 80.0
 tth_step = 0.01
+wvl = dic_wvl['Cu_Ka']
 data_num_train_qc     = 30000
 data_num_train_non_qc = 30000
 data_num_test_qc      = 10000
