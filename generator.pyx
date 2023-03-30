@@ -130,7 +130,7 @@ cpdef list calc_virtualiQC(int data_num, list QCpeaks_list, double wvl, double a
     QC_vectors_list = []
     tths_array = np.arange(tth_min, tth_max, tth_step, dtype = DTYPE_double)
     len_tths = len(tths_array)
-    for __ in tqdm.tqdm(range(data_num), desc="Progress:        QC"):
+    for __ in tqdm.tqdm(range(data_num), desc="Progress:       iQC"):
         if aico_min == aico_max:
             aico = aico_min
         else:
@@ -465,7 +465,7 @@ cpdef list independent_reflection_list(int h_range, double wvl, double aico_max,
     QCpeaks_list = []
     
     aico  = aico_max
-
+    print('Progress:   generating reflections list')
     for h1 in range(-h_range, h_range + 1):
         for h2 in range(-h_range, h_range + 1):
              for h3 in range(-h_range, h_range + 1):
