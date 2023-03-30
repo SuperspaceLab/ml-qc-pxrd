@@ -5,7 +5,6 @@ import numpy as np
 import math
 import random
 import glob
-#sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import generator as gen 
 import keras
 import tensorflow as tf
@@ -22,10 +21,6 @@ dic_wvl = {}
 dic_wvl['Cu_Ka'] = 1.54059
 dic_wvl['Cu_Kb'] = 1.3810
 
-import datetime
-import pytz
-today = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
-
 aico = 5.0  # icosahedral lattice constant in Ang
 aico_delta = 0.0
 hklmno_range = 6
@@ -38,10 +33,14 @@ data_num_tune_non_qc = 30000
 qperp_cutoff = 1.5 # in r.l.u (Yamamoto's setting).  this corresponds to 1.5*sqrt(2)=2.12... in r.l.u in Cahn-Gratias setting. 
 
 path_output = './tuning'
-output_file = 'output_'+str(today)[:-13].replace(':', '-')+'.txt'
 if os.path.isdir('%s'%(path_output))==False:
     os.mkdir('%s'%(path_output))
-  
+
+import datetime
+import pytz
+today = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
+output_file = 'output_'+str(today)[:-13].replace(':', '-')+'.txt'
+
 def create_model(num_Clayer, num_Dlayer, dense_units, num_filters, pool_sizes, Cstrides, Pstrides, dropout_rates, filter_sizes):
     model = Sequential()
     model.add(Conv1D(num_filters[0], filter_sizes[0], strides = Cstrides[0], activation = 'relu',padding = 'same', kernel_regularizer = regularizers.l2(0.01)))
