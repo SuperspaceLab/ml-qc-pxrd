@@ -130,7 +130,7 @@ cpdef list calc_virtualiQC(int data_num, list QCpeaks_list, double wvl, double a
     QC_vectors_list = []
     tths_array = np.arange(tth_min, tth_max, tth_step, dtype = DTYPE_double)
     len_tths = len(tths_array)
-    for __ in tqdm.tqdm(range(data_num), desc="Progress: virtual-iQC"):
+    for __ in tqdm.tqdm(range(data_num), desc="Progress:        QC"):
         if aico_min == aico_max:
             aico = aico_min
         else:
@@ -349,7 +349,7 @@ cpdef np.ndarray calc_others(int data_num, double tth_min, double tth_max, doubl
     tths_array = np.arange(tth_min, tth_max, tth_step)
     len_tths = len(tths_array)
 
-    for __ in tqdm.tqdm(range(data_num), desc="Progress: others"):
+    for __ in tqdm.tqdm(range(data_num),    desc="Progress:    non-QC"):
         hwhm = random.uniform(0.03,0.3)
 
         strong_tth_list = []
