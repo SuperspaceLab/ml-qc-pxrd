@@ -79,7 +79,7 @@ def objective(trial):
     dense_units = [int(trial.suggest_discrete_uniform("dense_units_"+str(i), 500, 3000, 500)) for i in range(num_Dlayer)]
     num_filters = [int(trial.suggest_discrete_uniform("num_filters_"+str(i), 32, 128, 32)) for i in range(num_Clayer)]
     filter_sizes=[int(trial.suggest_discrete_uniform("filter_sizes_"+str(i), 10, 50, 5)) for i in range(num_Clayer)]
-    dropout_rates=[trial.suggest_discrete_uniform('dropout_rates_'+str(i), 0.1, 0.5, 0.1) for i in range(num_Dlayer)]
+    dropout_rates=[trial.suggest_discrete_uniform('dropout_rates_'+str(i), 1, 5, 1) for i in range(num_Dlayer)]
     pool_sizes=[trial.suggest_int("pool_sizes_"+str(i), 1, 3) for i in range(num_Clayer)]
     Cstrides=[trial.suggest_int("Cstrides_"+str(i), 1, 3) for i in range(num_Clayer)]
     Pstrides=[trial.suggest_int("Pstrides_"+str(i), 1, 3) for i in range(num_Clayer)]
