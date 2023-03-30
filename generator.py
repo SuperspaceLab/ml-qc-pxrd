@@ -94,7 +94,7 @@ if __name__ == '__main__':
     wvl = dic_wvl['Cu_Ka']
     
     aico_max = aico + aico_delta
-    #ref_list = calc_QC_peaks(hklmno_range, aico, aico_max, wvl, tth_min, tth_max, qperp_cutoff)
+    #ref_list = pxrd.calc_QC_peaks(hklmno_range, aico, aico_max, wvl, tth_min, tth_max, qperp_cutoff)
     tmp = reflection_list(hklmno_range, wvl, aico_max, tth_max, qperp_cutoff)
     ref_list = independent_reflection_list_in_tth_range(tmp, wvl, aico_max, tth_min, tth_max)
     #print(len(ref_list))
@@ -104,11 +104,11 @@ if __name__ == '__main__':
     #data_num_train_other = 30000
     data_num_train_qc    = 20
     data_num_train_other = 20
-    x_train, y_train = dataset(wvl, ref_list, aico, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_train_qc, data_num_train_other)
+    x_train, y_train = dataset_labeled(wvl, ref_list, aico, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_train_qc, data_num_train_other)
     
     # test data
     #data_num_test_qc    = 10000
     #data_num_test_other = 10000
     data_num_test_qc    = 20
     data_num_test_other = 20
-    x_test, y_test = dataset(wvl, ref_list, aico, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_test_qc, data_num_test_other)
+    x_test, y_test = dataset_labeled(wvl, ref_list, aico, aico_delta, hklmno_range, tth_min, tth_max, tth_step, data_num_test_qc, data_num_test_other)
