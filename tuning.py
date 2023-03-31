@@ -69,6 +69,14 @@ x_data, y_data = gen.dataset_labeled(wvl, reflection_list, \
                                     data_num_tune_qc, data_num_tune_non_qc)
 x_data = x_data.reshape(data_num_tune_qc + data_num_tune_non_qc, num, 1)
 
+# export datasets
+np.save('%s/x_data.npy'%(path_output), x_data)
+np.save('%s/y_data.npy'%(path_output), y_data)
+
+# load datasets
+x_data = np.load('%s/x_data.npy'%(path_output))
+y_data = np.load('%s/y_data.npy'%(path_output))
+    
 def objective(trial, x_data, y_data):
     print('Optimize Start')
     
