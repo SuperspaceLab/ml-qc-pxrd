@@ -90,6 +90,7 @@ def dataset_labeled(wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, 
     #np.save('./y_data.npy', y_train)
     x_data = np.array(x_data, dtype='float64')
     y_data = np.array(y_data, dtype='float64')
+    
     return x_data, y_data
 
 if __name__ == '__main__':

@@ -485,6 +485,7 @@ cpdef list independent_reflection_list(int h_range, double wvl, double aico_max,
                                      QCpeaks_list.append([indice_array, 0])
     for index in range(len(QCpeaks_list)):
         QCpeaks_list[index][1] = number_of_equivalent_ref(QCpeaks_list[index][0].tolist()) # multiplicity
+    print('Complete:')
     return QCpeaks_list
 
 cpdef list selector(list hklmno, double wvl, double aico, double tth_min, double tth_max):

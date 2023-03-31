@@ -69,7 +69,7 @@ x_data, y_data = gen.dataset_labeled(wvl, reflection_list, \
                                     data_num_tune_qc, data_num_tune_non_qc)
 x_data = x_data.reshape(data_num_tune_qc + data_num_tune_non_qc, num, 1)
 
-def objective(trial):
+def objective(trial, x_data, y_data):
     print('Optimize Start')
     
     keras.backend.clear_session()
@@ -98,7 +98,7 @@ def objective(trial):
 
     print('score', score)
     return score
-    
+
 study = optuna.create_study()
 study.enqueue_trial({'num_Clayer': 3, \
                     'num_Dlayer': 2, \
@@ -111,7 +111,7 @@ study.enqueue_trial({'num_Clayer': 3, \
                     'Pstrides': [3, 3, 2], \
                     'optimizer': 'adam'})
 
-study.optimize(objective, n_trials=50)
+study.optimize(lambda trial: objective(trial, x_data, y_data), n_trials=50)
 print(study.best_params)
 
 cads = study.best_params
