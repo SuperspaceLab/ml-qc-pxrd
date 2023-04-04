@@ -95,9 +95,6 @@ def dataset_labeled(wvl, QC_peaks, aico_min, aico_delta, hklmno_range, tth_min, 
 
 if __name__ == '__main__':
     
-    
-    ####
-    
     aico = 5.0 # in Ang
     aico_delta = 0.025
     hklmno_range = 3
