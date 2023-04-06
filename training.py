@@ -28,7 +28,7 @@ data_num_train_qc     = 30000
 data_num_train_non_qc = 30000
 data_num_test_qc      = 10000
 data_num_test_non_qc  = 10000
-qperp_cutoff = 1.5 # in r.l.u (Yamamoto's setting).  this corresponds to 1.5*sqrt(2)=2.12... in r.l.u in Cahn-Gratias setting. 
+qperp_cutoff = 1.5
 
 path_model = './models/20230322'
 if os.path.isdir('%s'%(path_model))==False:
