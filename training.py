@@ -81,9 +81,9 @@ for i in range(num_all):
             self.mp3 = MaxPooling1D(1,  strides=2, padding='valid')
             self.flatten = Flatten()
             self.d1 = Dense(2500, activation='relu', kernel_regularizer=regularizers.l2(0.01))
-            self.do1 = Dropout(0.3)
+            self.do1 = Dropout(0.5)
             self.d2 = Dense(1000, activation='relu', kernel_regularizer=regularizers.l2(0.01))
-            self.do2 = Dropout(0.3)
+            self.do2 = Dropout(0.5)
             self.ds = Dense(2, activation='softmax')
 
         def call(self, x):
