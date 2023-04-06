@@ -102,7 +102,7 @@ if __name__ == '__main__':
     tth_min  = 20.0 # in degree
     tth_max  = 80.0
     tth_step = 0.01
-    qperp_cutoff = 1.5 # in r.l.u (Yamamoto's setting).  this corresponds to 1.5*sqrt(2)=2.12... in r.l.u in Cahn-Gratias setting. 
+    qperp_cutoff = 1.5
     wvl = dic_wvl['Cu_Ka']
     
     aico_max = aico + aico_delta
