@@ -17,6 +17,3 @@ work/
 *.log
 *.so
 *.c
-
-tuning.py
-
