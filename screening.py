@@ -26,11 +26,6 @@ def run(path_model, path_exptdata, extension, path_output, output_file_name, aic
     :param float aico_delta
     output:
     """
-    
-    # Checking GPU
-    physical_devices = tf.config.experimental.list_physical_devices('GPU')
-    assert len(physical_devices) > 0, "Not enough GPU hardware devices available"
-    config = tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
     if os.path.isdir('%s'%(path_output))==False:
         os.mkdir('%s'%(path_output))
