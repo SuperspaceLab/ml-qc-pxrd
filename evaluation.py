@@ -16,6 +16,12 @@ def run(path_model, epoch_num, batch_num, aico_min, aico_max, aico_delta, hklmno
     """
     run model evaluation uing synthetic datasets 
     """
+    
+    # Checking GPU
+    physical_devices = tf.config.experimental.list_physical_devices('GPU')
+    assert len(physical_devices) > 0, "Not enough GPU hardware devices available"
+    config = tf.config.experimental.set_memory_growth(physical_devices[0], True)
+    
     aico_num = int((aico_max - aico_min)/aico_delta)
     tth_step_num = int((tth_max - tth_min)/tth_step)
     
