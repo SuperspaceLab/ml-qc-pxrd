@@ -29,11 +29,6 @@ data_num_train_non_qc = 30000
 data_num_test_qc      = 10000
 data_num_test_non_qc  = 10000
 qperp_cutoff = 1.5
-
-# Checking GPU
-physical_devices = tf.config.experimental.list_physical_devices('GPU')
-assert len(physical_devices) > 0, "Not enough GPU hardware devices available"
-config = tf.config.experimental.set_memory_growth(physical_devices[0], True)
     
 path_model = './models/20230322'
 if os.path.isdir('%s'%(path_model))==False:
