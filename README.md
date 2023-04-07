@@ -7,4 +7,4 @@ In this repository, we provide an implementation of MLqcdiff models.
 
 1. Compile the generator.pyx: `python setup.py build_ext --inplace`
 2. Run the training.py to train the models
-3. Run the screening.py to screen dataset of powder x-ray diffraction patterns
+3. Run the screening.py to screen dataset of powder XRD patterns
