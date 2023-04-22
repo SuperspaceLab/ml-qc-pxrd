@@ -1,6 +1,6 @@
 # Machine Learning for Powder Diffraction of Quasicrystals
 
-Supporting Information for the paper "Deep learning enables rapid identification of a previously unknown quasicrystal solely from multiphase powder diffraction patterns"
+Supporting Information for the paper "Deep learning enables rapid identification of a previously unknown quasicrystal from multiphase powder diffraction patterns"
  
 ## Repository
 In this repository, we provide an implementation of MLqcdiff models.
