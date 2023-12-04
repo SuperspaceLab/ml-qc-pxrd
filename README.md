@@ -1,13 +1,12 @@
 # Machine Learning for Powder Diffraction of Quasicrystals
 
-Supporting Information for the following paper
+Supporting Information for the following paper:
 
 "Deep Learning Enables Rapid Identification of a New Quasicrystal from Multiphase Powder Diffraction Patterns"
 
 Hirotaka Uryu, Tsunetomo Yamada, Koichi Kitahara, Alok Singh, Yutaka Iwasaki, Kaoru Kimura, Kanta Hiroki, Naoki Miyao, Asuka Ishikawa, Ryuji Tamura, Satoshi Ohhashi, Chang Liu, Ryo Yoshida
 
-Advanced Science , 2304546-1-9 published 4/11/2023
-
+*Advanced Science*
 DOI:10.1002/advs.202304546
  
 ## Repository
